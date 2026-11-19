@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7dce8">
+<title>IQRA — A Royal Little Surprise</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap');
+:root{--wine:#793b60;--rose:#c65d88;--pink:#f5bfd2;--pale:#fff7f8;--gold:#d5ad69;--ink:#59394d}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;color:var(--ink);font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#fce8ef 0%,#f8d7e6 38%,#eee2fa 72%,#fff0e5 100%);overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(ellipse at 15% 10%,#fff9 0 8%,transparent 35%),radial-gradient(ellipse at 85% 80%,#fff7 0 7%,transparent 35%)}
+#sky,.petals{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}.star{position:absolute;color:#fff;font-size:var(--s);opacity:0;animation:twinkle var(--t) ease-in-out infinite;animation-delay:var(--d);text-shadow:0 0 12px #fff}
+@keyframes twinkle{0%,100%{opacity:.12;transform:scale(.7) rotate(0)}50%{opacity:.95;transform:scale(1.3) rotate(35deg)}}
+.petal{position:absolute;top:-12vh;left:var(--x);font-size:var(--s);opacity:.65;animation:fall var(--t) linear infinite;animation-delay:var(--d);filter:drop-shadow(0 3px 4px #b65b8830)}
+@keyframes fall{0%{transform:translate3d(0,-10vh,0) rotate(0);opacity:0}10%{opacity:.7}90%{opacity:.55}100%{transform:translate3d(var(--drift),115vh,0) rotate(500deg);opacity:0}}
+.wrap{position:relative;z-index:1;min-height:100vh;display:grid;place-items:center;padding:30px 15px}
+.shell{width:min(100%,760px);min-height:min(780px,calc(100vh - 36px));position:relative;border:1px solid #fff9;border-radius:34px;background:linear-gradient(145deg,#fffaf8ed,#fff4f5e8);box-shadow:0 30px 100px #89516a2b,inset 0 1px #fff;overflow:hidden;display:flex;flex-direction:column}
+.shell:before,.shell:after{content:"✧";position:absolute;color:#d9b779;font-size:30px;opacity:.65;z-index:2}.shell:before{top:20px;left:24px}.shell:after{bottom:20px;right:24px}
+.top{display:flex;align-items:center;justify-content:space-between;padding:24px 34px 10px;gap:12px}.brand{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#a66b86}.music{border:1px solid #e8c5d4;background:#fff9;border-radius:99px;padding:9px 13px;color:#96516f;font:600 11px 'DM Sans';cursor:pointer}
+.progress{height:3px;background:#f0dce5;margin:10px 34px 0;border-radius:9px;overflow:hidden}.progress span{height:100%;display:block;width:10%;background:linear-gradient(90deg,#cf7397,#d9b779);transition:width .55s ease}
+.stage{position:relative;flex:1;display:grid;place-items:center;padding:30px 32px 20px;min-height:510px}
+.scene{display:none;width:100%;max-width:590px;text-align:center;animation:sceneIn .8s cubic-bezier(.2,.8,.2,1) both}.scene.active{display:block}
+@keyframes sceneIn{from{opacity:0;transform:translateY(25px) scale(.97);filter:blur(5px)}to{opacity:1;transform:none;filter:blur(0)}}
+.eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:#b17a91;margin-bottom:18px}
+h1,h2{font-family:'Cormorant Garamond',serif;color:var(--wine);font-weight:600;line-height:.98;margin:12px 0 20px}
+h1{font-size:clamp(52px,10vw,88px)}h2{font-size:clamp(40px,7vw,60px)}
+.lead{font:400 clamp(16px,2.5vw,20px)/1.8 'Cormorant Garamond',serif;max-width:490px;margin:0 auto;color:#765166}
+.copy{font-size:15px;line-height:1.9;max-width:500px;margin:12px auto;color:#765a6b}
+.script{font:italic 30px 'Cormorant Garamond',serif;color:#bd5d87}
+.ornament{font-size:clamp(44px,8vw,70px);display:block;margin:0 auto 16px;filter:drop-shadow(0 9px 9px #c66b9030);animation:bob 3.5s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-11px) rotate(3deg)}}
+.pill{display:inline-block;border:1px solid #e7c6d4;background:#fff9;border-radius:99px;padding:9px 16px;font-size:11px;letter-spacing:1px;color:#a15a7a;margin-top:18px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:560px;margin:24px auto 0}
+.mini{background:#fff9;border:1px solid #f0dce5;border-radius:18px;padding:17px 12px;box-shadow:0 8px 22px #8e52650d;transition:transform .3s}.mini:hover{transform:translateY(-6px)}.mini b{display:block;font:600 23px 'Cormorant Garamond';color:#a94f78;margin:5px}.mini span{font-size:11px;line-height:1.5;color:#89677a}
+.list{max-width:430px;margin:18px auto;text-align:left;display:grid;gap:12px}.list div{background:#fff9;border:1px solid #f0dce5;border-radius:15px;padding:12px 16px;font-size:14px;box-shadow:0 5px 15px #8e52650a}.list i{font-style:normal;margin-right:9px}
+.seal{width:116px;height:116px;margin:0 auto 18px;border:1px solid #d7b36f;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle,#fff9 40%,#f6e5ed);box-shadow:0 0 0 8px #fff7,0 0 0 9px #e9d4df;animation:seal 6s linear infinite}
+@keyframes seal{to{transform:rotate(360deg)}}.seal span{font-size:52px;animation:seal 6s linear infinite reverse}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 34px 27px;gap:12px}.btn{border:0;border-radius:99px;padding:13px 21px;background:linear-gradient(135deg,#c65d88,#a94d79);color:white;font:600 13px 'DM Sans';letter-spacing:.2px;cursor:pointer;box-shadow:0 9px 20px #b9578130;transition:transform .2s,box-shadow .2s}.btn:hover{transform:translateY(-3px);box-shadow:0 13px 25px #b9578140}.btn:active{transform:scale(.97)}.btn.alt{background:#fff9;color:#94516e;border:1px solid #e8c5d4;box-shadow:none}.btn:disabled{opacity:.35;cursor:default;transform:none}.counter{font-size:11px;letter-spacing:2px;color:#a77a90}
+.footer{text-align:center;font-size:10px;letter-spacing:2px;color:#b58a9f;padding:0 10px 15px}
+.envelope{width:170px;height:120px;margin:12px auto 28px;position:relative;background:#eeb8cc;border-radius:8px;box-shadow:0 15px 25px #9c5c7625;cursor:pointer;transform-style:preserve-3d}
+.envelope:before{content:"";position:absolute;inset:0;background:linear-gradient(145deg,transparent 49%,#d98da9 50%) left/50% 100% no-repeat,linear-gradient(215deg,transparent 49%,#e5a4bd 50%) right/50% 100% no-repeat;z-index:2}
+.flap{position:absolute;inset:0;background:#f6cbd9;clip-path:polygon(0 0,100% 0,50% 65%);transform-origin:top;transition:transform .8s;z-index:3}
+.envelope.open .flap{transform:rotateX(180deg)}.letter{position:absolute;left:12px;right:12px;bottom:8px;height:90px;background:#fff9f4;border-radius:5px;display:grid;place-items:center;font:italic 20px 'Cormorant Garamond';color:#b04e7a;transition:transform .8s;z-index:1}.envelope.open .letter{transform:translateY(-58px)}
+.burst{position:fixed;pointer-events:none;z-index:10;font-size:20px;animation:burst 1.3s ease-out forwards}@keyframes burst{to{transform:translate(var(--x),var(--y)) rotate(240deg) scale(.2);opacity:0}}
+@media(max-width:560px){.wrap{padding:10px}.shell{min-height:calc(100vh - 20px);border-radius:25px}.top{padding:20px 22px 8px}.progress{margin:8px 22px 0}.stage{padding:30px 20px 16px;min-height:480px}.nav{padding:16px 22px 24px}.cards{gap:7px}.mini{padding:14px 7px}.mini span{font-size:10px}.copy{font-size:14px}.footer{font-size:9px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<div id="sky"></div><div class="petals" id="petals"></div>
+<div class="wrap"><main class="shell">
+ <header class="top"><div class="brand">✦ a royal surprise for iqra · by gojo raze 🖤 ✦</div><button class="music" id="sparkleBtn" type="button">✧ Sprinkle magic</button></header>
+ <div class="progress"><span id="bar"></span></div>
+ <div class="stage">
+  <section class="scene active">
+   <div class="eyebrow">A special delivery has arrived</div><div class="seal"><span>👑</span></div>
+   <h1>Happy<br>Princess Day</h1><p class="lead">For the one and only <b>IQRA</b> — today, the whole kingdom is yours.</p>
+   <div class="pill">OPEN YOUR LITTLE SURPRISE ✨</div>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 02 · The royal invitation</div><div class="ornament">💌</div><h2>Dear Princess Iqra,</h2>
+   <p class="lead">Please take your seat on the royal throne. This tiny website has been prepared by <b>Gojo Raze 🖤</b> with a little sparkle, a lot of respect, and just enough teasing.</p>
+   <p class="copy">Your royal duties for today: smile, relax, and accept compliments without arguing. 😌</p>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 03 · Official royal title</div><div class="ornament">🪄</div><h2>Khoobsurat<br>Churail</h2>
+   <p class="script">The legendary one. 😂</p><p class="copy">A nickname this iconic cannot be given to an ordinary person. It takes beauty, mischief, dramatic timing, and a little bit of supernatural talent.</p>
+   <div class="pill">TITLE APPROVED BY THE KINGDOM</div>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 04 · Why you're iconic</div><div class="ornament">🌷</div><h2>Three things<br>that make you YOU</h2>
+   <div class="cards"><div class="mini">✨<b>Your vibe</b><span>One of a kind. Impossible to copy.</span></div><div class="mini">😂<b>Your drama</b><span>Even Netflix needs your storyline.</span></div><div class="mini">🦋<b>Your sparkle</b><span>A little chaos, a lot of charm.</span></div></div>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 05 · Royal superpowers</div><div class="ornament">⚡</div><h2>Certified<br>troublemaker</h2>
+   <div class="list"><div><i>💬</i> Turning one message into a whole conversation.</div><div><i>🎭</i> Making a simple moment ten times more dramatic.</div><div><i>🌟</i> Being memorable without even trying.</div></div>
+   <p class="copy">Honestly, your talent deserves its own award. 🏆</p>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 06 · A little reminder</div><div class="ornament">🦢</div><h2>Never forget<br>your worth</h2>
+   <p class="lead">You're stronger than your difficult days, brighter than your doubts, and deserving of kindness in every season.</p>
+   <p class="copy">Keep your head high, protect your peace, and never let the world dim your sparkle. 💗</p>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 07 · Royal privileges</div><div class="ornament">🍰</div><h2>Rules for today</h2>
+   <div class="list"><div><i>👑</i> Be extra. It is your royal right.</div><div><i>🍓</i> Snacks are mandatory, not optional.</div><div><i>💅</i> Ignore negativity like a queen.</div><div><i>🤣</i> Laugh at your own jokes. Always.</div></div>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 08 · Important clarification</div><div class="ornament">🤝</div><h2>Friendship<br>certificate</h2>
+   <p class="lead">This royal surprise is officially, proudly, and completely <b>FRIENDSHIP EDITION</b>.</p>
+   <p class="copy">No romance. No proposal. No hidden plot twist. Just <b>Gojo Raze 🖤</b> appreciating a friend and teasing her a little. 😌</p>
+   <div class="pill">ONLY FRIENDS, YOUR HONOUR</div>
+  </section>
+  <section class="scene">
+   <div class="eyebrow">Chapter 09 · A wish from your friend</div><div class="ornament">🌙</div><h2>May life be<br>kind to you</h2>
+   <p class="lead">May your smile stay bright, your worries get lighter, your dreams come closer, and your days be filled with people who truly value you.</p>
+   <p class="copy">You deserve peaceful mornings, happy surprises, genuine laughter, and countless reasons to feel proud of yourself.</p>
+  </section>
+  <section class="scene" id="last">
+   <div class="eyebrow">Chapter 10 · The final royal reveal</div>
+   <div class="envelope" id="envelope" aria-label="Tap to open the friendship letter"><div class="flap"></div><div class="letter">For IQRA ♡</div></div>
+   <h2>One last thing…</h2><p class="lead">Tap the envelope, Your Highness.</p>
+   <p class="copy" id="lastNote">Your final message is waiting inside. 💌<br><span class="small">— Gojo Raze 🖤</span></p>
+   <div class="pill">HAPPY PRINCESS DAY, KHUBSOORAT CHURAIL 👑</div>
+  </section>
+ </div>
+ <nav class="nav"><button class="btn alt" id="prev" disabled>← Back</button><div class="counter" id="count">01 / 10</div><button class="btn" id="next">Next chapter →</button></nav>
+ <div class="footer">MADE WITH ✦ FRIENDSHIP ✦ AND A LITTLE MISCHIEF · GOJO RAZE 🖤</div>
+</main></div>
+<script>
+const scenes=[...document.querySelectorAll('.scene')];let current=0,opened=false;
+const bar=document.getElementById('bar'),count=document.getElementById('count'),prev=document.getElementById('prev'),next=document.getElementById('next');
+function render(){scenes.forEach((s,i)=>{s.classList.toggle('active',i===current)});bar.style.width=((current+1)*10)+'%';count.textContent=String(current+1).padStart(2,'0')+' / 10';prev.disabled=current===0;next.textContent=current===9?'Replay ↻':'Next chapter →';if(current===9)confetti(12)}
+next.onclick=()=>{current=current===9?0:current+1;render()};prev.onclick=()=>{current=Math.max(0,current-1);render()};
+function confetti(n=28){const symbols=['✦','♡','🌸','✨','💗','✧'];for(let i=0;i<n;i++){let e=document.createElement('span');e.className='burst';e.textContent=symbols[Math.floor(Math.random()*symbols.length)];e.style.left=(35+Math.random()*30)+'vw';e.style.top=(35+Math.random()*30)+'vh';e.style.setProperty('--x',(Math.random()*360-180)+'px');e.style.setProperty('--y',(Math.random()*-300-40)+'px');document.body.append(e);setTimeout(()=>e.remove(),1400)}}
+document.getElementById('sparkleBtn').onclick=()=>confetti(38);
+document.getElementById('envelope').onclick=()=>{const env=document.getElementById('envelope');env.classList.toggle('open');if(!opened){opened=true;document.getElementById('lastNote').innerHTML=`
+<p>You are a wonderful friend, Iqra. Keep shining, keep laughing, and never lose your beautiful madness. 😌💗</p>
+<p><b>— Gojo Raze 🖤</b></p>
+<hr style="border:0;border-top:1px solid #ead0dc;margin:18px auto;width:65%">
+<p style="font:italic 23px Cormorant Garamond;color:#b04e7a">Teri hansi se roshan har shaam rahe,<br>Khushiyon ke naam tera har paighaam rahe.<br>Yun hi muskurati rehna har mod par,<br>Tere chehre pe hamesha khushiyon ka mukaam rahe. 🌸</p>
+<p style="font:italic 23px Cormorant Garamond;color:#b04e7a">Na chaand ki khwahish, na sitaaron ka shor,<br>Teri dosti mein hi hai khushiyon ka zor.<br>Thodi si pagal, thodi si kamaal,<br>Khoobsurat Churail, tu hai bemisaal. 😂</p>
+<p style="font:italic 23px Cormorant Garamond;color:#b04e7a">Har din tera haseen, har khwaab ho poora,<br>Gham tujhse rahe door, sukoon ho bharpoor.<br>Dosti ka ye rishta yun hi muskurata rahe,<br>Gojo Raze ki taraf se ye paighaam yaad rahe. 🖤</p>
+<p style="font-size:12px;letter-spacing:1px">HAPPY PRINCESS DAY, IQRA 👑<br>With friendship &amp; mischief — Gojo Raze 🖤</p>
+`;confetti(55)}else{opened=false;document.getElementById('lastNote').textContent='Your final message is waiting inside. 💌'}};
+const sky=document.getElementById('sky'),petals=document.getElementById('petals');
+for(let i=0;i<45;i++){let s=document.createElement('span');s.className='star';s.textContent=['✦','✧','·'][i%3];s.style.left=Math.random()*100+'%';s.style.top=Math.random()*100+'%';s.style.setProperty('--s',(7+Math.random()*13)+'px');s.style.setProperty('--t',(2+Math.random()*4)+'s');s.style.setProperty('--d',(-Math.random()*5)+'s');sky.append(s)}
+for(let i=0;i<16;i++){let p=document.createElement('span');p.className='petal';p.textContent=['🌸','✿','♡'][i%3];p.style.setProperty('--x',Math.random()*100+'%');p.style.setProperty('--s',(12+Math.random()*14)+'px');p.style.setProperty('--t',(9+Math.random()*12)+'s');p.style.setProperty('--d',(-Math.random()*20)+'s');p.style.setProperty('--drift',(Math.random()*160-80)+'px');petals.append(p)}
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight')next.click();if(e.key==='ArrowLeft')prev.click()});
+</script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+:root {
+  --wine: #6a2f52;
+  --rose: #c65d88;
+  --rose-deep: #a94d79;
+  --pink: #f5bfd2;
+  --pale: #fff7f8;
+  --gold: #d5ad69;
+  --gold-bright: #e8c785;
+  --ink: #4f2f43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #fce8ef 0%, #f8d7e6 38%, #eee2fa 72%, #fff0e5 100%);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif-royal {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-sans-royal {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+@keyframes floatBob {
+  0%, 100% {
+    transform: translateY(0px) rotate(-3deg);
+  }
+  50% {
+    transform: translateY(-11px) rotate(3deg);
+  }
+}
+
+@keyframes sealSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes sealSpinReverse {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes softPulseGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes starTwinkle {
+  0%, 100% {
+    opacity: 0.14;
+    transform: scale(0.72) rotate(0deg);
+  }
+  50% {
+    opacity: 0.96;
+    transform: scale(1.32) rotate(35deg);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(var(--drift, 45px), 116vh, 0) rotate(500deg);
+    opacity: 0;
+  }
+}
+
+@keyframes magicBurst {
+  0% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(0.5);
+  }
+  45% {
+    opacity: 0.95;
+    transform: translate3d(calc(var(--dx) * 0.65), calc(var(--dy) * 0.65), 0) rotate(calc(var(--rot) * 0.6)) scale(var(--sc, 1.2));
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(var(--dx), var(--dy), 0) rotate(var(--rot)) scale(0.2);
+  }
+}
+
+@keyframes sceneSlideNext {
+  0% {
+    opacity: 0;
+    transform: translate3d(26px, 18px, 0) scale(0.97);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes sceneSlidePrev {
+  0% {
+    opacity: 0;
+    transform: translate3d(-26px, 18px, 0) scale(0.97);
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes staggerRise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 16px, 0) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes waxPulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+.animate-float-bob {
+  animation: floatBob 3.6s ease-in-out infinite;
+}
+
+.animate-seal-spin {
+  animation: sealSpin 16s linear infinite;
+}
+
+.animate-seal-reverse {
+  animation: sealSpinReverse 16s linear infinite;
+}
+
+.animate-pulse-glow {
+  animation: softPulseGlow 4.5s ease-in-out infinite;
+}
+
+.animate-star-twinkle {
+  animation: starTwinkle var(--t, 3s) ease-in-out infinite;
+  animation-delay: var(--d, 0s);
+}
+
+.animate-petal-fall {
+  animation: petalFall var(--t, 12s) linear infinite;
+  animation-delay: var(--d, 0s);
+}
+
+.animate-magic-burst {
+  animation: magicBurst 1.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scene-next {
+  animation: sceneSlideNext 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scene-prev {
+  animation: sceneSlidePrev 0.62s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-stagger-rise {
+  animation: staggerRise 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-wax-pulse {
+  animation: waxPulse 2.4s ease-in-out infinite;
+}
+
+/* Custom subtle scrollbars for letter reading on smaller viewports */
+.royal-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.royal-scroll::-webkit-scrollbar-track {
+  background: rgba(240, 220, 229, 0.35);
+  border-radius: 99px;
+}
+
+.royal-scroll::-webkit-scrollbar-thumb {
+  background: rgba(198, 93, 136, 0.35);
+  border-radius: 99px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "IQRA — A Royal Little Surprise",
+  "description": "An interactive, richly animated 10-chapter royal storybook surprise for Iqra by Gojo Raze.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
